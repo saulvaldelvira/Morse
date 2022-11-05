@@ -130,7 +130,7 @@ public:
 		add(".-.-.-", '.');
 		add("..--..", '?');
 		add("--.-", 'Q');
-		add("--.--", '�');
+		//add("--.--", '�');
 		add(".....", '5');
 		add("....-", '4');
 		add("...--", '3');
@@ -145,14 +145,14 @@ public:
 		add("----.", '9');
 		add("-----", '0');
 		
-		encoder.add(Character(' ', "/"));
-		encoder.add(Character('\n', "\n"));
-		encoder.add(Character(';', ""));
-		encoder.add(Character('á', ".-"));
-		encoder.add(Character('é', "."));
-		encoder.add(Character('í', ".."));
-		encoder.add(Character('ó', "---"));
-		encoder.add(Character('ú', "..-"));
+		encoder.add(Character((char) ' ', "/"));
+		encoder.add(Character((char) '\n', "\n"));
+		encoder.add(Character((char) ';', ""));
+		/*encoder.add(Character((char) 'á', ".-"));
+		encoder.add(Character((char) 'é', "."));
+		encoder.add(Character((char) 'í', ".."));
+		encoder.add(Character((char) 'ó', "---"));
+		encoder.add(Character((char) 'ú', "..-"));*/
 	}
 	~Morse() {
 		delete root;

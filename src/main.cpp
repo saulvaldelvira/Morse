@@ -2,10 +2,7 @@
 Morse morse;
 
 int main() {
-    cout << "**********MORSE decoder**********" << endl <<
-    "Made by Saul Valdelvira (\xB8 2022)" << endl <<
-    "More info at https://www.github.com/saulvaldelvira/morse" << endl;
-
+    presentation();
     string choice = "-1";
     do{
         showOptions();
@@ -14,6 +11,14 @@ int main() {
         processOption(choice);
     }while(choice!="0");
     return 0;
+}
+
+void presentation(){
+    cout << endl << 
+    "**********MORSE decoder*************************************"    << endl <<
+    "* Made by Saul Valdelvira (\xB8 2022)                         *" << endl <<
+    "* More info at https://www.github.com/saulvaldelvira/morse *"    << endl <<
+    "************************************************************"    << endl;
 }
 
 void showOptions(){

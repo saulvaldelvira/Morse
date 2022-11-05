@@ -40,7 +40,7 @@ void writeFile(string filename, string content){
     file.close();
 }
 
-void processContent(string source, string target, function<string(string)> func, int chunkSize=100000){
+void processContent(string source, string target, function<string(string)> func, int chunkSize=100){
     ifstream fileIn(source);
     if(!fileIn){
         cout<<"Source file not found!"<<endl;
