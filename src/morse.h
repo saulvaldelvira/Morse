@@ -88,6 +88,10 @@ private:
 	}
 
 	string _morseEncode(char c) {
+		if(!encoder.exists(c))
+			return "";
+		if(c=='\n')
+			return "\n";
 		Character character = encoder.get(Character(c));
 		return character.getMorseValue();
 	}

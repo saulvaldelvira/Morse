@@ -11,6 +11,10 @@ using std::vector;
 using std::cout;
 using std::endl;
 
+//Funcional (lambda)
+#include <functional>
+using std::function;
+
 string readFile(string filename){
     ifstream my_file(filename);
     if(!my_file){
@@ -34,6 +38,29 @@ void writeFile(string filename, string content){
     }
     file<<content;
     file.close();
+}
+
+void processContent(string source, string target, function<string(string)> func, int chunkSize=100000){
+    ifstream fileIn(source);
+    if(!fileIn){
+        cout<<"Source file not found!"<<endl;
+        return;
+    }
+    fstream fileOut(target, std::ios::out);
+    if(!fileOut){
+        cout<<"File could not be created"<<endl;
+        return;
+    }
+
+    char* buffer = new char[chunkSize];
+    while(fileIn.read(buffer, chunkSize)){
+        fileOut.write(func(string(buffer)).c_str(), chunkSize);
+    }
+    fileOut.write(func(string(buffer)).c_str(), fileIn.gcount());
+
+    delete buffer;
+    fileIn.close();
+    fileOut.close();
 }
 
 #endif

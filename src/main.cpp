@@ -37,7 +37,7 @@ void processOption(string option){
 void decode(){
     char choice = fileOrTerminal();
     if(choice=='1'){
-        operateFile([](string s) -> string { return morse.morseDecode(s);}, "_decoded.txt");
+        operateFile([](string s) -> string {return morse.morseDecode(s);}, "_decoded.txt");
     }else if(choice=='2'){ //TODO: No va!
         operateTerminal([](string s) -> string {return morse.morseDecode(s);}, "Decoded: ");
     }
@@ -46,7 +46,7 @@ void decode(){
 void encode(){
     char choice = fileOrTerminal();
     if(choice=='1'){
-        operateFile([](string s) -> string { return morse.morseEncode(s);}, "_encoded.txt");
+        operateFile([](string s) -> string {return morse.morseEncode(s);}, "_encoded.txt");
     }else if(choice=='2'){ //TODO: No va!
         operateTerminal([](string s) -> string {return morse.morseEncode(s);}, "Encoded: ");
     }
@@ -61,16 +61,13 @@ char fileOrTerminal(){
 }
 
 void operateFile(function<string(string)> f, string addToFile){
-    string filename;
+    string source, target;
     cout<<"Enter the filename: ";
-    cin >> filename;
-    string info = readFile(filename);
-    if(info=="")
-        return;
-    info = f(info);
-    filename = filename +  addToFile;
-    cout<<"The result file will be: " << filename <<endl;
-    writeFile(filename, info);
+    cin >> source;
+    target = source +  addToFile;
+    cout<<"The result file will be: " << target <<endl;
+    
+    processContent(source, target, f);
 }
 
 void operateTerminal(function<string(string)> f, string msgOut){
