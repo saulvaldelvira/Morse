@@ -65,7 +65,7 @@ private:
 				aux = aux->left;
 			}
 			else {
-				cout << "ERROR";
+				std::cout << "ERROR";
 			}
 				
 		}
