@@ -2,9 +2,9 @@
 Morse morse;
 
 int main() {
-    cout<<"**********MORSE/BRAILE decoder**********"<<endl<<
+    cout << "**********MORSE/BRAILE decoder**********" << endl <<
     "Made by Saul Valdelvira (\xB8 2022)" << endl <<
-    "More info at https://www.github.com/saulvaldelvira/morse" <<endl;
+    "More info at https://www.github.com/saulvaldelvira/morse" << endl;
 
     string choice = "-1";
     do{
