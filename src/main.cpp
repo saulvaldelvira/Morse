@@ -71,8 +71,9 @@ void operateFile(function<string(string)> f, string addToFile){
     cin >> source;
     target = source +  addToFile;
     cout<<"The result file will be: " << target <<endl;
-    
-    processContent(source, target, f);
+    writeFile(target, f(readFile(source)));
+    //TODO: No funciona bien. Si cortas una palabra a la mitad se jode. Hacer por lineas mejor
+    //processContent(source, target, f);
 }
 
 void operateTerminal(function<string(string)> f, string msgOut){

@@ -166,8 +166,11 @@ public:
 			if (msg[i] == ' ') {
 				result += _morseDecode(aux);
 				aux = "";
-			}
-			else
+			}else if(msg[i] == '\n'){
+				result += _morseDecode(aux);
+				result += "\n";
+				aux = "";
+			}else
 				aux += msg[i];
 		}
 		result += _morseDecode(aux);

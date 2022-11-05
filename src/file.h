@@ -40,13 +40,13 @@ void writeFile(string filename, string content){
     file.close();
 }
 
-void processContent(string source, string target, function<string(string)> func, int chunkSize=100){
-    ifstream fileIn(source);
+void processContent(string source, string target, function<string(string)> func, int chunkSize=10000){
+    ifstream fileIn(source, std::ios::out);
     if(!fileIn){
         cout<<"Source file not found!"<<endl;
         return;
     }
-    fstream fileOut(target, std::ios::out);
+    fstream fileOut(target);
     if(!fileOut){
         cout<<"File could not be created"<<endl;
         return;
