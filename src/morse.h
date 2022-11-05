@@ -88,10 +88,9 @@ private:
 	}
 
 	string _morseEncode(char c) {
+		c = std::toupper(c);
 		if(!encoder.exists(c))
 			return "";
-		if(c=='\n')
-			return "\n";
 		Character character = encoder.get(Character(c));
 		return character.getMorseValue();
 	}
@@ -147,6 +146,13 @@ public:
 		add("-----", '0');
 		
 		encoder.add(Character(' ', "/"));
+		encoder.add(Character('\n', "\n"));
+		encoder.add(Character(';', ""));
+		encoder.add(Character('á', ".-"));
+		encoder.add(Character('é', "."));
+		encoder.add(Character('í', ".."));
+		encoder.add(Character('ó', "---"));
+		encoder.add(Character('ú', "..-"));
 	}
 	~Morse() {
 		delete root;

@@ -2,7 +2,7 @@
 Morse morse;
 
 int main() {
-    cout << "**********MORSE/BRAILE decoder**********" << endl <<
+    cout << "**********MORSE decoder**********" << endl <<
     "Made by Saul Valdelvira (\xB8 2022)" << endl <<
     "More info at https://www.github.com/saulvaldelvira/morse" << endl;
 
@@ -17,8 +17,8 @@ int main() {
 }
 
 void showOptions(){
-    cout<<"\n1)Decode Morse/Braile" <<endl;
-    cout<<"2)Encode Morse/Braile" <<endl;
+    cout<<"\n1)Decode Morse" <<endl;
+    cout<<"2)Encode Morse" <<endl;
     cout<<"0)Exit" <<endl;
 }
 
