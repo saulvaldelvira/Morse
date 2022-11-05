@@ -1,9 +1,11 @@
 #ifndef TREE_H
 #define TREE_H
-#include <iostream>
-#include <concepts>
+//String
 #include <string>
 using std::string;
+
+//Concepts
+#include <concepts>
 using std::is_base_of;
 template<class T, class Q>
 concept Is_Base = is_base_of<T, Q>::value;
@@ -11,8 +13,6 @@ concept Is_Base = is_base_of<T, Q>::value;
 
 #ifndef TREESTACKABLE_H
 #define TREESTACKABLE_H
-#include <string>
-using std::string;
 template<class T>
 class TreeStackable
 {

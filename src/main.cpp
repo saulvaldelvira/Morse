@@ -1,59 +1,19 @@
-#include "morse.h"
-#include "file.h"
-#include <functional>
-using std::cout;
-using std::endl;
-using std::cin;
-using std::function;
+#include "main.h"
 Morse morse;
 
-char fileOrTerminal(){
-    cout<<"Do you want to input the text froma file or the terminal?"<<endl;
-    cout<< "1)File \n2)Terminal\nOption: ";
-    char choice;
-    cin >> choice;
-    return choice;
-}
+int main() {
+    cout<<"**********MORSE/BRAILE decoder**********"<<endl<<
+    "Made by Saul Valdelvira (\xB8 2022)" << endl <<
+    "More info at https://www.github.com/saulvaldelvira/morse" <<endl;
 
-void operate(function<string(string)> f, string addToFile){
-    string filename;
-    cout<<"Enter the filename: ";
-    cin >> filename;
-    string info = readFile(filename);
-    if(info=="")
-        return;
-    info = f(info);
-    filename = filename +  addToFile;
-    cout<<"The result file will be: " << filename <<endl;
-    writeFile(filename, info);
-}
-
-void decode(){
-    char choice = fileOrTerminal();
-    if(choice=='1'){
-        operate([](string s) -> string { return morse.morseDecode(s);}, "_decoded.txt");
-    }else if(choice=='2'){ //TODO: No va!
-        string info;
-        cout<<"Enter the message to decode: ";
-        std::getline(cin, info);
-        cout<<"\nDecoded:\n"<< morse.morseDecode(info)<<endl;;
-    }
-}
-
-void encode(){
-    char choice = fileOrTerminal();
-    if(choice=='1'){
-        operate([](string s) -> string { return morse.morseEncode(s);}, "_encoded.txt");
-    }else if(choice=='2'){ //TODO: No va!
-        string info;
-        cout<<"Enter the message to decode: ";
-        std::getline(cin, info);
-        cout<<"\nDecoded:\n"<< morse.morseDecode(info)<<endl;;
-    }
-}
-
-void terminate(){
-    morse.~Morse();
+    string choice = "-1";
+    do{
+        showOptions();
+        cout<<"Choice: ";
+        cin >> choice;
+        processOption(choice);
+    }while(choice!="0");
+    return 0;
 }
 
 void showOptions(){
@@ -74,16 +34,52 @@ void processOption(string option){
     }
 }
 
-int main() {
-    cout<<"**********MORSE/BRAILE decoder**********"<<endl<<
-    "Made by Saul Valdelvira (\xB8 2022)" << endl <<
-    "More info at https://www.github.com/saulvaldelvira/morse" <<endl;
+void decode(){
+    char choice = fileOrTerminal();
+    if(choice=='1'){
+        operateFile([](string s) -> string { return morse.morseDecode(s);}, "_decoded.txt");
+    }else if(choice=='2'){ //TODO: No va!
+        operateTerminal([](string s) -> string {return morse.morseDecode(s);}, "Decoded: ");
+    }
+}
 
-    string choice = "-1";
-    do{
-        showOptions();
-        cout<<"Choice: ";
-        cin >> choice;
-        processOption(choice);
-    }while(choice!="0");
+void encode(){
+    char choice = fileOrTerminal();
+    if(choice=='1'){
+        operateFile([](string s) -> string { return morse.morseEncode(s);}, "_encoded.txt");
+    }else if(choice=='2'){ //TODO: No va!
+        operateTerminal([](string s) -> string {return morse.morseEncode(s);}, "Encoded: ");
+    }
+}
+
+char fileOrTerminal(){
+    cout<<"Do you want to input the text froma file or the terminal?"<<endl;
+    cout<< "1)File \n2)Terminal\nOption: ";
+    char choice;
+    cin >> choice;
+    return choice;
+}
+
+void operateFile(function<string(string)> f, string addToFile){
+    string filename;
+    cout<<"Enter the filename: ";
+    cin >> filename;
+    string info = readFile(filename);
+    if(info=="")
+        return;
+    info = f(info);
+    filename = filename +  addToFile;
+    cout<<"The result file will be: " << filename <<endl;
+    writeFile(filename, info);
+}
+
+void operateTerminal(function<string(string)> f, string msgOut){
+    string info;
+    cout<<"Input: ";
+    std::getline(cin, info);
+    cout<<endl<<msgOut << f(info) <<endl;
+}
+
+void terminate(){
+    morse.~Morse();
 }
