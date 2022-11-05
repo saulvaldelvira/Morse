@@ -76,6 +76,7 @@ void operateFile(function<string(string)> f, string addToFile){
 void operateTerminal(function<string(string)> f, string msgOut){
     string info;
     cout<<"Input: ";
+    cin.ignore();
     std::getline(cin, info);
     cout<<endl<<msgOut << f(info) <<endl;
 }
