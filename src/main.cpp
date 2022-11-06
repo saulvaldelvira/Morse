@@ -65,6 +65,7 @@ char fileOrTerminal(){
     return choice;
 }
 
+//Operates from a file. The function passed as a parameter is the one that will transform the content
 void operateFile(function<string(string)> f, string addToFile){
     string source, target;
     cout<<"Enter the filename: ";
@@ -76,6 +77,7 @@ void operateFile(function<string(string)> f, string addToFile){
     //processContent(source, target, f);
 }
 
+//Operates from the terminal. The function passed as a parameter is the one that will transform the content
 void operateTerminal(function<string(string)> f, string msgOut){
     string info;
     cout<<"Input: ";

@@ -2,7 +2,9 @@
 #define MORSEDECODER_H
 #include "tree.h"
 
+//Morse class
 class Morse {
+	//Morse Node, for the tree structure
 	struct MorseNode
 	{
 		char info;
@@ -14,6 +16,7 @@ class Morse {
 		}
 	};
 
+	//To translate a character to morse
 	class Character : TreeStackable<Character> {
 	private:
 		char value;

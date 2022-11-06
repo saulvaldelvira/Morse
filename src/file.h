@@ -15,6 +15,7 @@ using std::endl;
 #include <functional>
 using std::function;
 
+//Reads from file
 string readFile(string filename){
     ifstream my_file(filename);
     if(!my_file){
@@ -30,6 +31,7 @@ string readFile(string filename){
     return string(file_data.begin(), file_data.end());
 }
 
+//Writes to file
 void writeFile(string filename, string content){
     fstream file(filename, std::ios::out);
     if(!file){
@@ -40,6 +42,8 @@ void writeFile(string filename, string content){
     file.close();
 }
 
+/*THIS IS NOT WORKING FOR NOW.
+    The proble is that reading in chunks of n characters without taking in count that morse characters are divided by spaces, breaks the content
 void processContent(string source, string target, function<string(string)> func, int chunkSize=10000){
     ifstream fileIn(source, std::ios::out);
     if(!fileIn){
@@ -61,6 +65,6 @@ void processContent(string source, string target, function<string(string)> func,
     delete buffer;
     fileIn.close();
     fileOut.close();
-}
+}*/
 
 #endif
