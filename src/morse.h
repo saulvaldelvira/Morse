@@ -92,8 +92,8 @@ private:
 
 	string _morseEncode(char c) {
 		c = std::toupper(c);
-		if(!encoder.exists(c))
-			return "";
+		//if(!encoder.exists(c))
+		//	return "";
 		Character character = encoder.get(Character(c));
 		return character.getMorseValue();
 	}
