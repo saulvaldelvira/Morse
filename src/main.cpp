@@ -72,9 +72,7 @@ void operateFile(function<string(string)> f, string addToFile){
     cin >> source;
     target = source +  addToFile;
     cout<<"The result file will be: " << target <<endl;
-    writeFile(target, f(readFile(source)));
-    //TODO: No funciona bien. Si cortas una palabra a la mitad se jode. Hacer por lineas mejor
-    //processContent(source, target, f);
+    processContent(source, target, f);
 }
 
 //Operates from the terminal. The function passed as a parameter is the one that will transform the content

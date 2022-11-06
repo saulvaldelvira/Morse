@@ -42,29 +42,31 @@ void writeFile(string filename, string content){
     file.close();
 }
 
-/*THIS IS NOT WORKING FOR NOW.
-    The proble is that reading in chunks of n characters without taking in count that morse characters are divided by spaces, breaks the content
-void processContent(string source, string target, function<string(string)> func, int chunkSize=10000){
-    ifstream fileIn(source, std::ios::out);
+void processContent(string source, string target, function<string(string)> func){
+    ifstream fileIn(source);
     if(!fileIn){
         cout<<"Source file not found!"<<endl;
         return;
     }
-    fstream fileOut(target);
+    fstream fileOut(target, std::ios::out);
     if(!fileOut){
         cout<<"File could not be created"<<endl;
         return;
     }
 
-    char* buffer = new char[chunkSize];
-    while(fileIn.read(buffer, chunkSize)){
-        fileOut.write(func(string(buffer)).c_str(), chunkSize);
+    string line;
+    while(std::getline(fileIn, line)){
+        line = func(line);
+        line += "\n";
+        fileOut.write(line.c_str(), line.size());
+        line = "";
     }
-    fileOut.write(func(string(buffer)).c_str(), fileIn.gcount());
+    line = func(line);
+    line += "\n";
+    fileOut.write(line.c_str(), line.size());
 
-    delete buffer;
     fileIn.close();
     fileOut.close();
-}*/
+}
 
 #endif
