@@ -10,4 +10,4 @@ The saulv::Morse class uses a Binary Tree to decode morse text.
 ![imagen](https://user-images.githubusercontent.com/84346214/206912776-2b6f7f10-bcf6-4f73-a5dc-aab5743c1db8.png)
 In the image above you can see how it works. If i have a morse text like "\_\.", following the tree i get the letter N.
 
-  NOTE: I've added a few characters in the empty nodes to support '.', ',' etc.
+  NOTE: I've added support for a few more characters that are not in this immage.
