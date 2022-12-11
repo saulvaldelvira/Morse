@@ -7,7 +7,7 @@ It is silly, and not very professional. I made it purely for the sake of learnin
 The aplication is NOT case sensitive, so n and N are the same. Also, when decoding, the output will allways be uppercase.
 
 ## Example:
-Encoding <br>
+Encoding from the terminal<br>
 ![imagen](https://user-images.githubusercontent.com/84346214/206918966-b3c7e9a9-714a-4ac4-ba3a-4f04923afbf6.png)
 
 Decoding the previous message <br>
