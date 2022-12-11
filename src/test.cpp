@@ -1,39 +1,24 @@
 #include "main.h"
-#include <chrono>
-using namespace std::chrono;
-Morse morse;
+#include "file.h"
+saulv::Morse morse;
 
-void encodeTest(){
-    auto start = high_resolution_clock::now();
+void test(){
 
-    string filename = "..\\bin\\lor.txt", 
-            dest = "..\\bin\\testEncode.txt";
+    string  decoded = readFile(".\\test\\testDecoded.txt"),
+            encoded = readFile(".\\test\\testEncoded.txt");
 
-    processContent(filename, dest, [](string s) -> string {return morse.morseEncode(s);});
+    cout<<decoded<<endl<<"************"<<encoded<<endl;
 
-    auto stop = high_resolution_clock::now();
-
-    auto duration = duration_cast<microseconds>(stop - start);
- 
-    cout << "Encode duration: " << duration.count() << " microseconds" << endl;
-}
-
-void decodeTest(){
-    auto start = high_resolution_clock::now();
-
-    string dest = "..\\bin\\testDecode.txt", 
-            filename = "..\\bin\\testEncode.txt";
-
-    processContent(filename, dest, [](string s) -> string {return morse.morseDecode(s);});
-
-    auto stop = high_resolution_clock::now();
-
-    auto duration = duration_cast<microseconds>(stop - start);
- 
-    cout << "Decode duration: " << duration.count() << " microseconds" << endl;
+    if(morse.morseDecode(encoded)==decoded)
+        cout<<"Decode sucesfull\n";
+    else
+        cout<<"Decode un-sucesfull\n";
+    if(morse.morseEncode(decoded)==encoded)
+        cout<<"Encode sucesfull\n";
+    else
+        cout<<"Encode un-sucesfull\n";
 }
 
 int main() {
-    encodeTest();
-    decodeTest();
+    test();
 }

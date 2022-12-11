@@ -54,7 +54,7 @@ private:
 	char _morseDecode(string s) {
 		if (s == "/")
 			return ' ';
-		if(s == "?")
+		if(s == "#")
 			return '#'; //it uses # to represent and unknown character. We do this so it doesn't break and continues the translation.
 		MorseNode* aux = root;
 		for (int i = 0; i < s.length(); i++) {
