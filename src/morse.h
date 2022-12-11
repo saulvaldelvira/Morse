@@ -31,12 +31,12 @@ private:
 	void add(string s, char value) {
 		MorseNode* aux = root;
 		for (int i = 0; i < s.length(); i++) {
-			if (s[i] == DASH) {
+			if (s[i] == DASH) { //if it is a dash, move right in the tree
 				if(aux->right == NULL)
 					aux->right = new MorseNode{};
 				aux = aux->right;
 			}
-			else if (s[i] == DOT) {
+			else if (s[i] == DOT) { //if it is a dot, move left in the tree
 				if(aux->left == NULL)
 					aux->left = new MorseNode{};
 				aux = aux->left;
@@ -45,29 +45,31 @@ private:
 				//std::cout << "ERROR";
 			}
 				
-		}
-		aux->info = value;
+		}//when the string ends, we are in the node we want
+		aux->info = value; //we add the value to the node
 
-		encoder[value] = s;
+		encoder[value] = s; //also to the encoder
 	}
 
 	char _morseDecode(string s) {
 		if (s == "/")
 			return ' ';
+		if(s == "?")
+			return '#'; //it uses # to represent and unknown character. We do this so it doesn't break and continues the translation.
 		MorseNode* aux = root;
 		for (int i = 0; i < s.length(); i++) {
-			if (s[i] == DASH)
+			if (s[i] == DASH) //if it is a dash, move right in the tree
 				aux = aux->right;
-			else if (s[i] == DOT)
+			else if (s[i] == DOT) //if it is a dot, move left in the tree
 				aux = aux->left;
-		}
-		return aux->info;
+		}//when the string ends, we are in the node we want
+		return aux->info; //we return the value of this node
 	}
 
 	string _morseEncode(char c) {
 		c = std::toupper(c);
 		if(!encoder.contains(c))
-			return "?";
+			return "#"; //if it encounters an unknown character, puts a #
 		return encoder[c];
 	}
 
@@ -133,15 +135,15 @@ public:
 		string aux = "",
 			   result = "";
 		for (int i = 0; i < msg.length(); i++) {
-			if (msg[i] == ' ') {
-				result += _morseDecode(aux);
-				aux = "";
-			}else if(msg[i] == '\n'){
-				result += _morseDecode(aux);
-				result += "\n";
+			if (msg[i] == ' ') { //if we reach an space
+				result += _morseDecode(aux); //we decode de buffered string
+				aux = ""; //and reset the aux to an empty string
+			}else if(msg[i] == '\n'){ //if we reach a newline
+				result += _morseDecode(aux); //we also decode the buffered string
+				result += "\n"; //and add the newline at the end
 				aux = "";
 			}else
-				aux += msg[i];
+				aux += msg[i]; //else we just add the character to the buffer
 		}
 		result += _morseDecode(aux);
 		return result;
