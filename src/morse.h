@@ -1,5 +1,6 @@
-#ifndef MORSEDECODER_H
-#define MORSEDECODER_H
+#pragma once
+#ifndef MORSE_H
+#define MORSE_H
 #include <map>
 #include <string>
 using std::string;
