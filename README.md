@@ -12,7 +12,7 @@ It includes a class (saulv::Morse) wich you can use for whatever you want in you
 The saulv::Morse class uses a Binary Tree to decode morse text.
 
 ![imagen](https://user-images.githubusercontent.com/84346214/206912776-2b6f7f10-bcf6-4f73-a5dc-aab5743c1db8.png)
-In the image above you can see how it works. While parsing a morse string of Dots and Dashes that represents a character, we move to the right with every Dash, 
+In the image above you can see how it works. While parsing a morse string of Dots and Dashes representing a character, we move to the right with every Dash, 
 and to the left with every Dot.
 If i have a morse text like "\-\.\-\.", following the tree i get the letter C.
 
