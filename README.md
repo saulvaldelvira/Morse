@@ -15,4 +15,5 @@ In the image above you can see how it works. If i have a morse text like "\_\.",
 ## Building
 You can run the following command 
 ```
-g++ file.cpp main.cpp -o ../bin/morse -std=c++20```
+g++ file.cpp main.cpp -o ../bin/morse -std=c++20
+```
