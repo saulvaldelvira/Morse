@@ -12,7 +12,7 @@ In the image above you can see how it works. If i have a morse text like "\_\.",
 
   NOTE: I've added a few more characters that are not in this image, like '.' and ','.
 
-## Building
+## Compiling
 You can run the following command in the src folder.
 ```
 g++ file.cpp main.cpp -o ../bin/morse -std=c++20
