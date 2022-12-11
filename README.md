@@ -5,8 +5,8 @@ The interface is pretty simple: You can either encode or decode morse messages, 
 It is silly, and not very professional. I made it purely for the sake of learning and improving my skills, so don't take it very seriously. Still I think it could be useful, at least for educational purposes.
 
 ## saulv::Morse
-Apart from the executable aplication, you can download the Morse.h file. It includes a class (saulv::Morse) that you 
-can use for whatever you want. I dont know, maybe someone will find it useful :)
+Apart from the executable aplication, you can download the "Morse.h" header file. <br>
+It includes a class (saulv::Morse) wich you can use for whatever you want in your proyects :)
 
 ## How it works
 The saulv::Morse class uses a Binary Tree to decode morse text.
