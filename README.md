@@ -6,4 +6,5 @@
 
 ##How it works
 The saulv::Morse class uses a Binary Tree to decode morse text.
-![imagen](https://user-images.githubusercontent.com/84346214/206912751-014f7f55-c24f-455e-87dc-a974ab60e448.png)
+![imagen](https://user-images.githubusercontent.com/84346214/206912776-2b6f7f10-bcf6-4f73-a5dc-aab5743c1db8.png)
+
