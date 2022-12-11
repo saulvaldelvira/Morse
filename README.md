@@ -13,7 +13,7 @@ Encoding from the terminal<br>
 Decoding the previous message <br>
 ![imagen](https://user-images.githubusercontent.com/84346214/206919032-669fb384-b689-4deb-b9fd-18e3fbec5473.png)
 
-  NOTE: When you input through the console, it reads lines until you input a blank one.
+  NOTE: When you input through the console, it reads lines until you input an empty one.
 
 ## saulv::Morse
 Apart from the executable aplication, you can download the "Morse.h" header file. <br>
