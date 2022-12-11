@@ -27,7 +27,8 @@ In the image above you can see how it works. While parsing a morse string of Dot
 and to the left with every Dot.
 If i have a morse text like "\-\.\-\.", following the tree i get the character 'C'.
 
-  NOTE: I've added a few more characters that are not in this image, like '.' and ','. Also, '/' is a whitespace, so "\-\.\-\. / \-\.\-\." would be "C C"
+  NOTE: I've added a few more characters that are not in this image, like '.' and ','. <br>
+  Also, '/' is a whitespace, so "\-\.\-\. / \-\.\-\." would be "C C"
 
 ## Compiling
 You can run the following command in the src folder.
