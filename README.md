@@ -4,6 +4,17 @@ It is a translator from morse code to normal readable text and viceversa. <br>
 The interface is pretty simple: You can either encode or decode morse messages, and you can choose to do it from a file or from the terminal itself. <br>
 It is silly, and not very professional. I made it purely for the sake of learning and improving my skills, so don't take it very seriously. Still I think it could be useful, at least for educational purposes.
 
+The aplication is NOT case sensitive, so n and N are the same. Also, when decoding, the output will allways be uppercase.
+
+## Example:
+Encoding from terminal
+![imagen](https://user-images.githubusercontent.com/84346214/206918966-b3c7e9a9-714a-4ac4-ba3a-4f04923afbf6.png)
+
+Decoding the previous message:
+![imagen](https://user-images.githubusercontent.com/84346214/206919032-669fb384-b689-4deb-b9fd-18e3fbec5473.png)
+
+
+
 ## saulv::Morse
 Apart from the executable aplication, you can download the "Morse.h" header file. <br>
 It includes a class (saulv::Morse) wich you can use for whatever you want in your proyects :)
