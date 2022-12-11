@@ -9,12 +9,13 @@ using std::endl;
 using std::cin;
 
 //Funciones
-char fileOrTerminal();
-void operateFile(function<string(string)> f, string addToFile);
-void operateTerminal(function<string(string)> f, string msgOut);
-void decode();
-void encode();
+char fileOrTerminal(string msg);
 void terminate();
 void presentation();
 void showOptions();
 void processOption(string option);
+string getFromFile(string&);
+void writeToFile(string, string, int);
+string getFromTerminal(void);
+void writeToTerminal(string, string);
+void operate(function<string(string)>, int);

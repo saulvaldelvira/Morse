@@ -1,58 +1,32 @@
 #ifndef MORSEDECODER_H
 #define MORSEDECODER_H
-#include "tree.h"
+#include <map>
+#include <string>
+using std::string;
+using std::map;
 
-//Morse class
+namespace saulv{
+/// @brief Morse class. It can encode or decode from morse to readable text and viceversa.
 class Morse {
-	//Morse Node, for the tree structure
-	struct MorseNode
+	
+private:
+	/*Morse Node, for the tree structure.
+	This class uses a Binary Tree to decode morse messages.
+	*/
+	typedef struct sMorseNode
 	{
 		char info;
-		MorseNode* left;
-		MorseNode* right;
-		~MorseNode() { //destructor
+		sMorseNode* left;
+		sMorseNode* right;
+		~sMorseNode() {
 			delete left;
 			delete right;
 		}
-	};
-
-	//To translate a character to morse
-	class Character : TreeStackable<Character> {
-	private:
-		char value;
-		string morseValue;
-	public:
-		Character(char c) {
-			value = std::toupper(c);
-			morseValue = "";
-		}
-		Character(char c, string m) {
-			value = c;
-			morseValue = m;
-		}
-		char getCValue() {
-			return value;
-		}
-		string getMorseValue() {
-			return morseValue;
-		}
-		int compareTo(Character c) {
-			if (value > c.getCValue())
-				return 1;
-			else if (value < c.getCValue())
-				return -1;
-			else
-				return 0;
-		}
-
-		string toString() {
-			return value + "";
-		}
-	};
-
-private:
+	} MorseNode;
+	
 	MorseNode* root;
-	AVLTree<Character> encoder;
+
+	map<char, string> encoder;
 
 	void add(string s, char value) {
 		MorseNode* aux = root;
@@ -74,7 +48,7 @@ private:
 		}
 		aux->info = value;
 
-		encoder.add(Character(value, s));
+		encoder[value] = s;
 	}
 
 	char _morseDecode(string s) {
@@ -92,18 +66,16 @@ private:
 
 	string _morseEncode(char c) {
 		c = std::toupper(c);
-		//if(!encoder.exists(c))
-		//	return "";
-		Character character = encoder.get(Character(c));
-		return character.getMorseValue();
+		if(!encoder.contains(c))
+			return "?";
+		return encoder[c];
 	}
 
 public:
 	const char DASH = '-';
 	const char DOT = '.';
 	Morse() {
-		root = new MorseNode{' '};
-		encoder = AVLTree<Character>();
+		root = new MorseNode{' '}; //the root does not contain anything, it is just a start point.
 		add(".", 'E');
 		add("-", 'T');
 		add("..", 'I');
@@ -133,7 +105,6 @@ public:
 		add(".-.-.-", '.');
 		add("..--..", '?');
 		add("--.-", 'Q');
-		//add("--.--", '�');
 		add(".....", '5');
 		add("....-", '4');
 		add("...--", '3');
@@ -148,18 +119,14 @@ public:
 		add("----.", '9');
 		add("-----", '0');
 		
-		encoder.add(Character((char) ' ', "/"));
-		encoder.add(Character((char) '\n', "\n"));
-		encoder.add(Character((char) ';', ""));
-		/*encoder.add(Character((char) 'á', ".-"));
-		encoder.add(Character((char) 'é', "."));
-		encoder.add(Character((char) 'í', ".."));
-		encoder.add(Character((char) 'ó', "---"));
-		encoder.add(Character((char) 'ú', "..-"));*/
+		//add these extra characters to the encoder, so we can recover the spaces
+		encoder[' '] = "/";
+		encoder['\n'] = "\n";
+		encoder[';'] = ""; // TODO: Make a way to decode ';'. Add it to one of the empty nodes 
+		
 	}
 	~Morse() {
 		delete root;
-		encoder.~AVLTree();
 	}
 
 	string morseDecode(string msg) {
@@ -189,5 +156,5 @@ public:
 		return result;
 	}
 };
-
+}
 #endif
