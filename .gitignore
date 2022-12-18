@@ -1,3 +1,6 @@
 bin
 .vscode
 *.exe
+
+.*.swo
+.*.swp
