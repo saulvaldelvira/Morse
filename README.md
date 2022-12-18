@@ -35,3 +35,5 @@ You can run the following command in the src folder.
 ```
 g++ file.cpp main.cpp -o ../bin/morse -std=c++20
 ```
+NOTE: you'll need to create a bin folder in the root of this proyect fro this command to work. Anyways, theres a 
+build.bat file that does that for you
