@@ -1,8 +1,9 @@
 CCFLAGS = -std=c++20
+CCX = g++.exe
 
 .PHONY: debug folder clean
 debug: folder
-	g++.exe  src/main.cpp src/file.cpp -o bin/morse.exe $(CCFLAGS)
+	$(CCX)  src/main.cpp src/file.cpp -o bin/morse $(CCFLAGS)
 folder:
 	mkdir -p bin/
 
